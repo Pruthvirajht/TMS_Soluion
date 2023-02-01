@@ -1,0 +1,54 @@
+﻿<body style="background-color:antiquewhite">
+
+    @model List<TMS_CRS.Models.OffenceDetail>
+        <marquee><h1 style="color:saddlebrown">Welcome To Report Page</h1></marquee>
+        <form method="post">
+            <table>
+                <tr>
+                    <th>Enter vechile No</th>
+                <td><input type="text" name="vehicleNo" /></td>
+                </tr>
+                <tr>
+                    
+                    <th><input type="submit" value="Generate Report" style="background-color:deepskyblue" /></th>
+                </tr>
+            </table>
+        </form>
+        <br />
+        <br />
+        <br />
+        @if (Model != null)
+        {
+            <table border="4">
+                <tr>
+                    
+                    <th>offence Id</th>
+                    <th>Place</th>
+                    <th>Timing</th>
+                    <th>Reported By</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>@item.OffenceId</td>
+                        <td>@item.Place</td>
+                        <td>@item.Time</td>
+                        <td>@item.ReportedBy</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </table>
+        }
+        <br />
+        <br />
+        <br />
+        <br />
+    </body>
+<br/>
+<br/>
+<br/>
+<div>
+    <button type="button" onclick="location.href='@Url.Action("HomePage")'" style="background-color:deepskyblue"><b>Return To HomePage</b></button>
+</div>

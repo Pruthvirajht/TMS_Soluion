@@ -1,0 +1,42 @@
+﻿<link rel="stylesheet" href="~/css/style.css" />
+@model List<TMS_CRS.Models.TmRegdetail>;
+<form method="post">
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <th>Enter Owner ID</th>
+            <td><input type="number" name="id" required /></td>
+        </tr>
+        <tr>
+            <th style="text-align:center">@Html.TextBox("sub_button", "Submit", new { type = "submit", style = "background-color:#00beff;height: 50px; width: 100px;" })</th>
+        </tr>
+    </table>
+</form>
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>Owner ID</th>
+            <th>Date of Purchase</th>
+            <th>Distributer Name</th>
+            <th>Vehicle ID</th>
+            <th>Vehicle Number</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OwnerId</td>
+                <td>@item.DateOfPurchase</td>
+                <td>@item.DistrubuterName</td>
+                <td>@item.VehId</td>
+                <td>@item.VehNo</td>
+            </tr>
+        }
+    </table>
+}
+    <br />
+    <div>
+        <input type="button" value="Back"
+               style="height: 50px; width: 100px; background-color: #00beff;"
+               onclick="location.href='@Url.Action("RTOHome", "ConsumeRTO")'" />
+    </div>

@@ -1,0 +1,88 @@
+﻿<link rel="stylesheet" href="~/css/style.css"/>
+<body style="background-color:antiquewhite">
+@model TMS_CRS.Models.TmOwnerdetail;
+    <form method="post">
+        @Html.ValidationSummary(true)
+        <marquee><h2 style="color:maroon">Welcome to User Registration Page</h2></marquee>
+        <table  style="margin-left:auto;margin-right:auto;">
+            <tr>
+                <th>First Name</th>
+                <td>@Html.TextBoxFor(x => x.Fname)</td>
+                <td><em>@Html.ValidationMessageFor(x=>x.Fname)</em></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>@Html.TextBoxFor(x => x.Lname)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.Lname)</em></td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td>@Html.TextBoxFor(x => x.DateOfBirth, new { type = "date" })</td>
+                <td><em>@Html.ValidationMessageFor(x => x.DateOfBirth)</em></td>
+            </tr>
+            <tr>
+                <th>LandLine Number</th>
+                <td>@Html.EditorFor(x => x.LandLineNo)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.LandLineNo)</em></td>
+            </tr>
+            <tr>
+                <th>Mobile Number</th>
+                <td>@Html.EditorFor(x => x.MobileNo)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.MobileNo)</em></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    @Html.RadioButtonFor(x => x.Gender, "Male")Male
+                    @Html.RadioButtonFor(x => x.Gender, "Female")Female
+                </td>
+                <td><em>@Html.ValidationMessageFor(x => x.Gender)</em></td>
+
+            </tr>
+            <tr>
+                <th>Temporary Address</th>
+                <td>@Html.TextAreaFor(x => x.TempAddr)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.TempAddr)</em></td>
+
+            </tr>
+            <tr>
+                <th>Permanent Address</th>
+                <td>@Html.TextAreaFor(x => x.PermAddr)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.PermAddr)</em></td>
+
+            </tr>
+            <tr>
+                <th>Pincode</th>
+                <td>@Html.EditorFor(x => x.Pincode)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.Pincode)</em></td>
+
+            </tr>
+            <tr>
+                <th>Occupation</th>
+                <td>@Html.TextBoxFor(x => x.Occupation)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.Occupation)</em></td>
+
+            </tr>
+            <tr>
+                <th>PanCard Number</th>
+                <td>@Html.TextBoxFor(x => x.PanCardNo)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.PanCardNo)</em></td>
+
+            </tr>
+            <tr>
+                <th>Address Proof Name</th>
+                <td>@Html.TextBoxFor(x => x.AddProofName)</td>
+                <td><em>@Html.ValidationMessageFor(x => x.AddProofName)</em></td>
+
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align:center">@Html.TextBox("sub_button", "Submit", new { type = "submit",style= "background-color:#00beff;height: 50px; width: 100px;" })</th>
+            </tr>
+        </table>
+        <div>
+            <input type="button" value="Back" 
+                   style="height: 50px; width: 100px; background-color: #00beff;"
+                   onclick="location.href='@Url.Action("RTOHome", "ConsumeRTO")'" />
+        </div>
+    </form>
+</body>

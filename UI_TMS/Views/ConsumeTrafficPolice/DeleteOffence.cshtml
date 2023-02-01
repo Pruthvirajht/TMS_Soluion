@@ -1,0 +1,16 @@
+﻿<body style="background-color:antiquewhite">
+    @model TMS_CRS.Models.OffenceDetail
+     @using (Html.BeginForm())
+    {
+        <input type="submit" value="delete" />
+    }
+
+    <h1 style="color:saddlebrown">Offence Details Deleted</h1>
+
+</body>
+<br />
+<br />
+<br />
+<a href="##" onClick="history.go(-1); return false;"> Back</a>
+<br/>
+<td><button type="button" onclick="location.href='@Url.Action("HomePage")'">Return To HomePage</button></td>

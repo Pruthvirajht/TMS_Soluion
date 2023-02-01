@@ -1,0 +1,40 @@
+﻿<body style="background-color:antiquewhite">
+    @model TMS_CRS.Models.OffenceDetail
+    @using (Html.BeginForm())
+    {
+        <table border="3" style="margin-left:auto;margin-right:auto;margin-top:10%">
+            <tr>
+                <td><b>Offence No</b></td>
+                <td>@Html.TextBoxFor(x => x.OffenceNo, new { @readonly = true })</td>
+            </tr>
+            <tr>
+                <td><b>Vehicle no</b></td>
+                <td>@Html.TextBoxFor(x => x.VehNo, new { @readonly = true })</td>
+            </tr>
+
+            <tr>
+                <td><b>Offence id</b></td>
+                <td>@Html.TextBoxFor(x => x.OffenceId, new { @readonly = true })</td>
+            </tr>
+            <tr>
+                <td><b>Reported by</b></td>
+                <td>@Html.TextBoxFor(x => x.ReportedBy, new { @readonly = true })</td>
+            </tr>
+            <tr>
+                <td><b>Status</b></td>
+                <td>@Html.TextBoxFor(x => x.Status)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Edit" /></td>
+            </tr>
+        </table>
+    }
+
+    @Html.ValidationSummary(true)
+
+</body>
+<br />
+<br />
+<br />
+<a href="##" onClick="history.go(-1); return false;"> Back</a>
+@*<td><button type="button" onclick="location.href='@Url.Action("HomePage")'">Return To HomePage</button></td>*@
