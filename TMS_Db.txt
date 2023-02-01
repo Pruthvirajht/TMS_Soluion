@@ -1,0 +1,101 @@
+create table TM_OWNERDETAILS
+(
+Owner_Id int constraint pkOwner_ID primary key identity(1,1),
+FName varchar(50) not null,
+LName varchar(50) not null,
+DateOfBirth Date not null,
+LandLine_No BIGINT,
+Mobile_No BIGINT,
+Gender varchar(20) not null,
+TEMP_ADDR varchar(100),
+PERM_ADDR varchar(100),
+Pincode INT not null,
+Occupation varchar(50),
+PanCard_No varchar(50) not null,
+Add_Proof_Name varchar(50) not null
+)
+*****************************************
+create table TM_VechicleDetails
+(
+Veh_Id int constraint pkVeh_ID primary key identity(1,1),
+VEH_TYPE varchar(50) not null,
+ENGINE_NO varchar(50) unique,
+MODEL_NO varchar(50) not null,
+VEH_NAME varchar(50) not null,
+VEH_COLOR varchar(50),
+MANUFACTURER_NAME varchar(60) not null,
+Date_Of_Manufacture date not null,
+NO_OF_CYCLINDERS INT,
+Cuibic_Capacity INT,
+Fuel_Used varchar(20)
+)
+88888********************************************
+ create table TM_REGDETAILS
+(
+APP_NO varchar(50) constraint pk_AppNo primary key,
+VEH_NO varchar(50) unique,
+VEH_ID int constraint fk_vehId references TM_VechicleDetails(Veh_Id),
+Owner_Id int constraint fk_ownerId references TM_OWNERDETAILS(Owner_Id),
+OLD_OWNER_ID int constraint fk_oldOwnerId references TM_OWNERDETAILS(Owner_Id),
+DATE_OF_PURCHASE Date not null,
+DISTRUBUTER_NAME varchar(50) not null,
+)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+ create table Offence_Details
+ (
+OFFENCE_NO int constraint pk_OffenceNo primary key,
+VEH_NO varchar(50) constraint fk_VehNo references TM_REGDETAILS(VEH_NO),
+Time Date not null,
+Place  varchar(50) not null,
+OFFENCE_ID int constraint fk_offenceID references TM_Offence(OffenceId),
+REPORTED_BY varchar(50) not null,
+Status varchar(60) not null,
+
+)
+******************************************************************************
+ create table TM_UserMaster
+ (
+Username varchar(50) constraint pk_username primary key,
+Password varchar(50) not null,
+Rolename varchar(50) not null
+)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+create table TM_Offence
+(
+OffenceId int constraint pkOffence_ID primary key identity(1,1),
+OffenceType varchar(50) not null,
+VehType varchar(50) not null,
+Penalty int not null
+)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Scaffold-DbContext "Data Source=DESKTOP-K1GC6V3\SQLEXPRESS;Initial Catalog=TMS_Database;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+
+"ConnectionStrings": {
+    "Conn": "Data Source=DESKTOP-K1GC6V3\\SQLEXPRESS;Initial Catalog=TMS_Database;Integrated Security=True;"
+  }
+
+
+INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('General offences','All vehicles',100);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Driving vehicles without valid licence','All vehicles',2000);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Driving at excessive speed','All vehicles',3000);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Driving dangerously','All vehicles',4000);
+    INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Racing and trials of speed without permission','All vehicles',5000);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Talking on mobile phone while driving','All vehicles',6000);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Driving uninsured vehicle','All vehicles',9000);
+   INSERT INTO TM_Offence(OffenceType,VehType,Penalty) VALUES('Driving when mentally or physically unfit to drive','All vehicles',10000);
+
+
+ALTER TABLE TM_RegDetail
+ADD CONSTRAINT FK_OldOwnerId
+FOREIGN KEY (OldOwnerId) REFERENCES TM_OwnerDetail(Owner_Id);
+
+
+
+
+UPDATE TM_UserMaster
+SET Rolename = 'Traffic_Police'
+where Username='Pruthvi';
